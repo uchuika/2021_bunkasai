@@ -1,5 +1,6 @@
 package com.uchuika.Game.code;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -67,7 +68,7 @@ public class Main extends JFrame {
  
 		//MoviePanelのサイズを動画に合わせてJFrameに追加
 		mp.setPreferredSize(new Dimension(videoW,videoH));
-		splash.add(mp);
+		splash.getContentPane().add(mp);
  
 		//JFrame側のパネルサイズを動画に合わせる
 		splash.getContentPane().setPreferredSize(new Dimension(videoW,videoH));
@@ -118,6 +119,11 @@ public class Main extends JFrame {
 		panel.setBackground(Color.DARK_GRAY);
 		panel.setBounds(0, 0, 770, 560);
 		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		Button button = new Button("New button");
+		button.setBounds(265, 457, 240, 50);
+		panel.add(button);
 		
 		setVisible(true);
 	}
