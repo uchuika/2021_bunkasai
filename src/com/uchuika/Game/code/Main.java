@@ -3,6 +3,7 @@ package com.uchuika.Game.code;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,13 +25,15 @@ public class Main extends JFrame {
 		
 		//スプラッシュスクリーン発動
 		SplashScrn();
-				
+		
+		/*
 		//五秒待機
 		try {
 			Thread.sleep(5000);
 		}catch (InterruptedException e) {
 			System.out.println("起動に失敗しました。");
-		}	
+		}
+		*/	
 		
 		new Main();
 		
@@ -88,9 +91,8 @@ public class Main extends JFrame {
 			Thread.sleep(5000);
 		}catch (InterruptedException e) {
 			System.out.println("起動に失敗しました。");
-		}
+		}	
 		
-		new Main();
 		
 		//非表示
 		splash.setVisible(false);
@@ -121,7 +123,10 @@ public class Main extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		Button button = new Button("New button");
+		Button button = new Button("シャットダウン");
+		button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 18));
+		button.setForeground(Color.WHITE);
+		button.setBackground(new Color(0, 204, 153));
 		button.setBounds(265, 457, 240, 50);
 		panel.add(button);
 		
