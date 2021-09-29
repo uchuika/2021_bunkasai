@@ -123,12 +123,19 @@ public class Main extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		Button button = new Button("シャットダウン");
+		Button button = new Button("ストーリーモード");
 		button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 18));
 		button.setForeground(Color.WHITE);
-		button.setBackground(new Color(0, 204, 153));
-		button.setBounds(265, 457, 240, 50);
+		button.setBackground(new Color(241, 57, 83));
+		button.setBounds(265, 450, 240, 50);
 		panel.add(button);
+		
+		Button button_1 = new Button("オンラインモード");
+		button_1.setForeground(Color.WHITE);
+		button_1.setBackground(new Color (241, 57, 83));
+		button_1.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 18));
+		button_1.setBounds(265, 380, 240, 50);
+		panel.add(button_1);
 		
 		setVisible(true);
 	}
