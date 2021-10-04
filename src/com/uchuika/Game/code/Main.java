@@ -4,6 +4,11 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,13 +38,13 @@ public class Main extends JFrame {
 		}catch (InterruptedException e) {
 			System.out.println("起動に失敗しました。");
 		}
-		*/	
-		
-		new Main();
+		*/
+			new Main();
+
 		
 	}
 
-
+	//スプラッシュスクリーンの処理
 	public static void SplashScrn() {
 		
 		int result = 0;
@@ -106,8 +111,26 @@ public class Main extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
+	 * @throws FontFormatException 
+	 * @throws FileNotFoundException 
 	 */
+	//メインwindow
 	public Main() {
+		
+		Font keifont = null;
+		
+		try{
+			keifont = Font.createFont(Font.TRUETYPE_FONT,new File("fonts/k-font/keifont.ttf"));
+			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(keifont);
+		}catch(FontFormatException e){
+			  System.out.println("形式がフォントではありません。");
+		}catch(IOException e){
+			  System.out.println("入出力エラーでフォントを読み込むことができませんでした。");
+		}
+		
+		
+		//Mainwindowの基本設定
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 789, 608);
@@ -117,25 +140,44 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.DARK_GRAY);
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 770, 560);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		//ストーリーモードのボタン
 		Button button = new Button("ストーリーモード");
-		button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 18));
+		
+		//button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
+		keifont = keifont.deriveFont(23f);
+		button.setFont(keifont);
+		
 		button.setForeground(Color.WHITE);
 		button.setBackground(new Color(241, 57, 83));
 		button.setBounds(265, 450, 240, 50);
 		panel.add(button);
 		
+		//設定のボタン
+		Button button_2 = new Button("設定");
+		button_2.setForeground(Color.WHITE);
+		button_2.setBounds(265, 310, 240, 50);
+		button_2.setBackground(new Color (241, 57, 83));
+		button_2.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
+		panel.add(button_2);
+		
+		//オンラインモードのボタン
 		Button button_1 = new Button("オンラインモード");
 		button_1.setForeground(Color.WHITE);
 		button_1.setBackground(new Color (241, 57, 83));
-		button_1.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 18));
+		button_1.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
 		button_1.setBounds(265, 380, 240, 50);
 		panel.add(button_1);
+		
+		Button button_3 = new Button("プレイヤーデータ");
+		button_3.setBounds(265, 240, 240, 50);
+		panel.add(button_3);
 		
 		setVisible(true);
 	}
