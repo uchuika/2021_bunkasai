@@ -5,12 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -21,6 +22,7 @@ import javafx.scene.media.MediaPlayer.Status;
 public class Main extends JFrame {
 
 	private JPanel contentPane;
+	Font keifont = null;
 
 	/**
 	 * Launch the application.
@@ -121,13 +123,14 @@ public class Main extends JFrame {
 		Font keifont = null;
 		
 		try{
-			keifont = Font.createFont(Font.TRUETYPE_FONT,new File("fonts/k-font/keifont.ttf"));
-			GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(keifont);
+			keifont = Font.createFont(Font.TRUETYPE_FONT,new FileInputStream("fonts/k-font/keifont.ttf"));
 		}catch(FontFormatException e){
 			  System.out.println("形式がフォントではありません。");
 		}catch(IOException e){
 			  System.out.println("入出力エラーでフォントを読み込むことができませんでした。");
 		}
+		
+		 keifont = keifont.deriveFont(27F);
 		
 		
 		//Mainwindowの基本設定
@@ -150,9 +153,8 @@ public class Main extends JFrame {
 		//ストーリーモードのボタン
 		Button button = new Button("ストーリーモード");
 		
-		//button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
-		keifont = keifont.deriveFont(23f);
-		button.setFont(keifont);
+		button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
+		
 		
 		button.setForeground(Color.WHITE);
 		button.setBackground(new Color(241, 57, 83));
@@ -176,8 +178,16 @@ public class Main extends JFrame {
 		panel.add(button_1);
 		
 		Button button_3 = new Button("プレイヤーデータ");
+		button_3.setForeground(Color.WHITE);
+		button_3.setFont(new Font("HGP創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
+		button_3.setBackground(new Color (241, 57, 83));
 		button_3.setBounds(265, 240, 240, 50);
 		panel.add(button_3);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/com/uchuika/Game/PNG/とある部活の鬼ごっこ.png")));
+		lblNewLabel.setBounds(0, 0, 770, 560);
+		panel.add(lblNewLabel);
 		
 		setVisible(true);
 	}
