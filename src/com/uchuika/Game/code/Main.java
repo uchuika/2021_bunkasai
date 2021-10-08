@@ -21,7 +21,9 @@ import javafx.scene.media.MediaPlayer.Status;
 
 public class Main extends JFrame {
 
+	
 	private JPanel contentPane;
+	//フォント定義
 	Font keifont = null;
 
 	/**
@@ -152,10 +154,7 @@ public class Main extends JFrame {
 		
 		//ストーリーモードのボタン
 		Button button = new Button("ストーリーモード");
-		
 		button.setFont(new Font("HGS創英角ﾎﾟｯﾌﾟ体", Font.BOLD, 23));
-		
-		
 		button.setForeground(Color.WHITE);
 		button.setBackground(new Color(241, 57, 83));
 		button.setBounds(265, 450, 240, 50);
